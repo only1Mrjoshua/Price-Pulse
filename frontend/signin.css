@@ -303,9 +303,10 @@ body {
     pointer-events: none;
 }
 
+/* FIXED: Password input field padding to accommodate the eye icon */
 .input-with-icon input {
     width: 100%;
-    padding: 16px 16px 16px 48px;
+    padding: 16px 48px 16px 48px; /* Equal padding on both sides for the eye icon */
     background-color: rgba(255, 255, 255, 0.05);
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
@@ -327,6 +328,7 @@ body {
     color: var(--gray);
 }
 
+/* FIXED: Eye icon positioning - properly inside the input field */
 .toggle-password {
     position: absolute;
     right: 16px;
@@ -335,11 +337,14 @@ body {
     color: var(--gray);
     cursor: pointer;
     font-size: 1.1rem;
-    padding: 4px;
-    transition: var(--transition);
+    padding: 0;
+    width: 24px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: var(--transition);
+    z-index: 2;
 }
 
 .toggle-password:hover {
@@ -678,6 +683,14 @@ body {
     .benefits-panel {
         padding: 35px 30px;
     }
+    
+    .input-with-icon input {
+        padding: 16px 48px 16px 48px;
+    }
+    
+    .toggle-password {
+        right: 16px;
+    }
 }
 
 /* Tablet Landscape - 1024px to 1199px */
@@ -703,6 +716,14 @@ body {
         width: 45px;
         height: 45px;
         font-size: 1.2rem;
+    }
+    
+    .input-with-icon input {
+        padding: 16px 48px 16px 48px;
+    }
+    
+    .toggle-password {
+        right: 16px;
     }
 }
 
@@ -751,6 +772,21 @@ body {
     
     .benefits-header p {
         font-size: 1rem;
+    }
+    
+    .input-with-icon input {
+        padding: 16px 48px 16px 48px;
+    }
+    
+    .toggle-password {
+        right: 16px;
+    }
+    
+    /* FIXED: Keep "Forgot Password" link beside "Remember Me" on tablets */
+    .form-options {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 10px;
     }
     
     .footer-bottom {
@@ -853,8 +889,9 @@ body {
         font-size: 1rem;
     }
     
+    /* FIXED: Mobile password field with proper padding for eye icon */
     .input-with-icon input {
-        padding: 14px 14px 14px 44px;
+        padding: 14px 44px 14px 44px;
         font-size: 0.95rem;
         border-radius: 10px;
     }
@@ -862,12 +899,16 @@ body {
     .toggle-password {
         right: 14px;
         font-size: 1rem;
+        width: 20px;
+        height: 20px;
     }
     
+    /* FIXED: Keep "Forgot Password" link beside "Remember Me" on mobile */
     .form-options {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
         margin: 5px 0 15px;
     }
     
@@ -1001,7 +1042,7 @@ body {
     }
     
     .input-with-icon input {
-        padding: 12px 12px 12px 40px;
+        padding: 12px 40px 12px 40px;
         font-size: 0.9rem;
     }
     
@@ -1013,6 +1054,28 @@ body {
     .toggle-password {
         right: 12px;
         font-size: 0.95rem;
+        width: 18px;
+        height: 18px;
+    }
+    
+    /* FIXED: Ensure "Forgot Password" stays beside "Remember Me" on small mobile */
+    .form-options {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 8px;
+    }
+    
+    .remember-me {
+        flex-shrink: 1;
+    }
+    
+    .remember-me label {
+        font-size: 0.8rem;
+    }
+    
+    .forgot-password {
+        font-size: 0.8rem;
+        flex-shrink: 0;
     }
     
     .benefits-header h2 {
@@ -1099,7 +1162,7 @@ body {
     }
     
     .input-with-icon input {
-        padding: 10px 10px 10px 38px;
+        padding: 10px 38px 10px 38px;
         font-size: 0.85rem;
     }
     
@@ -1111,14 +1174,32 @@ body {
     .toggle-password {
         right: 10px;
         font-size: 0.9rem;
+        width: 16px;
+        height: 16px;
+    }
+    
+    /* FIXED: Keep "Forgot Password" beside "Remember Me" even on extra small screens */
+    .form-options {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 6px;
+    }
+    
+    .remember-me {
+        flex: 1;
+        min-width: 0;
     }
     
     .remember-me label {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     
     .forgot-password {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+        flex-shrink: 0;
     }
     
     .signup-link p {
