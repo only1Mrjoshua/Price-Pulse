@@ -33,6 +33,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .container {
@@ -56,8 +57,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    width: 100%;
     padding: 0 20px;
 }
 
@@ -66,6 +66,7 @@ body {
     align-items: center;
     gap: 12px;
     min-width: 0;
+    max-width: 100%;
 }
 
 .logo-img {
@@ -90,6 +91,9 @@ body {
     color: var(--light);
     text-decoration: none;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .logo-text span {
@@ -131,6 +135,7 @@ body {
     border: 2px solid var(--primary);
     font-family: 'Poppins', sans-serif;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .btn-secondary:hover {
@@ -146,6 +151,7 @@ body {
     justify-content: center;
     padding: 40px 20px;
     min-height: calc(100vh - 160px);
+    width: 100%;
 }
 
 .signin-section {
@@ -164,11 +170,13 @@ body {
     box-shadow: var(--shadow-lg);
     border: 1px solid rgba(255, 215, 0, 0.1);
     animation: fadeInUp 0.8s ease-out;
+    width: 100%;
 }
 
 .signin-header {
     text-align: center;
     margin-bottom: 30px;
+    width: 100%;
 }
 
 .signin-header h1 {
@@ -176,17 +184,21 @@ body {
     color: var(--light);
     margin-bottom: 10px;
     line-height: 1.2;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .signin-subtitle {
     color: var(--light-gray);
     font-size: 1.1rem;
     font-family: 'Inter', sans-serif;
+    line-height: 1.5;
 }
 
 /* Google Sign-in */
 .google-signin-container {
     margin-bottom: 30px;
+    width: 100%;
 }
 
 .btn-google {
@@ -206,6 +218,9 @@ body {
     cursor: pointer;
     transition: var(--transition);
     box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .btn-google:hover {
@@ -216,6 +231,7 @@ body {
 
 .btn-google i {
     font-size: 1.2rem;
+    flex-shrink: 0;
 }
 
 .divider {
@@ -224,6 +240,7 @@ body {
     margin: 20px 0;
     color: var(--gray);
     font-size: 0.9rem;
+    width: 100%;
 }
 
 .divider::before,
@@ -236,6 +253,7 @@ body {
 
 .divider span {
     padding: 0 15px;
+    white-space: nowrap;
 }
 
 /* Form Styles */
@@ -243,12 +261,14 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    width: 100%;
 }
 
 .form-group label {
@@ -261,6 +281,7 @@ body {
     position: relative;
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .input-with-icon i {
@@ -269,6 +290,7 @@ body {
     color: var(--gray);
     font-size: 1.1rem;
     z-index: 1;
+    pointer-events: none;
 }
 
 .input-with-icon input {
@@ -281,6 +303,8 @@ body {
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
     transition: var(--transition);
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .input-with-icon input:focus {
@@ -303,6 +327,9 @@ body {
     font-size: 1.1rem;
     padding: 4px;
     transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .toggle-password:hover {
@@ -315,6 +342,7 @@ body {
     min-height: 20px;
     font-family: 'Inter', sans-serif;
     margin-top: 4px;
+    word-wrap: break-word;
 }
 
 /* Form Options */
@@ -323,12 +351,16 @@ body {
     justify-content: space-between;
     align-items: center;
     margin: 10px 0;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .remember-me {
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-shrink: 0;
 }
 
 .remember-me input[type="checkbox"] {
@@ -336,6 +368,7 @@ body {
     height: 18px;
     accent-color: var(--primary);
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .remember-me label {
@@ -343,6 +376,7 @@ body {
     font-size: 0.9rem;
     cursor: pointer;
     user-select: none;
+    white-space: nowrap;
 }
 
 .forgot-password {
@@ -350,6 +384,7 @@ body {
     text-decoration: none;
     font-size: 0.9rem;
     transition: var(--transition);
+    white-space: nowrap;
 }
 
 .forgot-password:hover {
@@ -375,6 +410,7 @@ body {
     transition: var(--transition);
     box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
     margin-top: 10px;
+    white-space: nowrap;
 }
 
 .btn-signin:hover {
@@ -390,6 +426,7 @@ body {
 .btn-signin i {
     font-size: 1.1rem;
     transition: var(--transition);
+    flex-shrink: 0;
 }
 
 .btn-signin:hover i {
@@ -402,11 +439,13 @@ body {
     margin-top: 25px;
     padding-top: 25px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
 }
 
 .signup-link p {
     color: var(--light-gray);
     font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 .signup-link a {
@@ -424,6 +463,7 @@ body {
 .security-info {
     margin-top: 20px;
     text-align: center;
+    width: 100%;
 }
 
 .secure-badge {
@@ -436,10 +476,14 @@ body {
     border-radius: 20px;
     font-size: 0.9rem;
     flex-shrink: 0;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .secure-badge i {
     font-size: 0.9rem;
+    flex-shrink: 0;
 }
 
 /* Benefits Panel */
@@ -450,11 +494,13 @@ body {
     box-shadow: var(--shadow-lg);
     border: 1px solid rgba(255, 215, 0, 0.1);
     animation: fadeInRight 0.8s ease-out;
+    width: 100%;
 }
 
 .benefits-header {
     text-align: center;
     margin-bottom: 40px;
+    width: 100%;
 }
 
 .benefits-header h2 {
@@ -462,24 +508,28 @@ body {
     color: var(--light);
     margin-bottom: 10px;
     line-height: 1.2;
+    word-wrap: break-word;
 }
 
 .benefits-header p {
     color: var(--light-gray);
     font-size: 1.1rem;
     font-family: 'Inter', sans-serif;
+    line-height: 1.5;
 }
 
 .benefits-list {
     display: flex;
     flex-direction: column;
     gap: 25px;
+    width: 100%;
 }
 
 .benefit-item {
     display: flex;
     align-items: flex-start;
     gap: 15px;
+    width: 100%;
 }
 
 .benefit-icon {
@@ -495,10 +545,16 @@ body {
     flex-shrink: 0;
 }
 
+.benefit-content {
+    flex: 1;
+    min-width: 0;
+}
+
 .benefit-content h3 {
     font-size: 1.1rem;
     color: var(--light);
     margin-bottom: 5px;
+    word-wrap: break-word;
 }
 
 .benefit-content p {
@@ -506,6 +562,7 @@ body {
     font-size: 0.9rem;
     line-height: 1.5;
     font-family: 'Inter', sans-serif;
+    word-wrap: break-word;
 }
 
 /* Footer */
@@ -514,6 +571,8 @@ body {
     padding-top: 40px;
     padding-bottom: 30px;
     margin-top: auto;
+    margin-bottom: 40px; /* Added to prevent sticking to screen edges */
+    width: 100%;
 }
 
 .footer-bottom {
@@ -524,12 +583,14 @@ body {
     align-items: center;
     gap: 20px;
     text-align: center;
+    width: 100%;
 }
 
 .footer-bottom p {
     margin: 0;
     font-size: 0.9rem;
     color: var(--light-gray);
+    line-height: 1.5;
 }
 
 .footer-extra {
@@ -538,6 +599,7 @@ body {
     gap: 25px;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
 }
 
 .footer-extra a {
@@ -545,6 +607,7 @@ body {
     text-decoration: none;
     font-size: 0.9rem;
     transition: var(--transition);
+    white-space: nowrap;
 }
 
 .footer-extra a:hover {
@@ -584,8 +647,19 @@ body {
     animation: shake 0.5s ease-in-out;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
+/* ==============================
+   RESPONSIVE DESIGN - MOBILE FIRST
+   ============================== */
+
+/* Extra Large Screens - 1440px and above */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1400px;
+    }
+}
+
+/* Large Screens - 1200px to 1439px */
+@media (max-width: 1200px) {
     .signin-section {
         gap: 40px;
     }
@@ -596,19 +670,51 @@ body {
     }
 }
 
-@media (max-width: 768px) {
-    .signin-section {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        max-width: 500px;
-    }
-    
+/* Tablet Landscape - 1024px to 1199px */
+@media (max-width: 1024px) {
     .signin-header h1 {
         font-size: 2.2rem;
     }
     
     .benefits-header h2 {
         font-size: 1.8rem;
+    }
+    
+    .signin-wrapper,
+    .benefits-panel {
+        padding: 30px 25px;
+    }
+    
+    .benefit-item {
+        gap: 12px;
+    }
+    
+    .benefit-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Tablet Portrait - 768px to 1023px */
+@media (max-width: 768px) {
+    .signin-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        max-width: 600px;
+    }
+    
+    .signin-container {
+        padding: 30px 15px;
+        min-height: auto;
+    }
+    
+    .nav-container {
+        padding: 0 15px;
+    }
+    
+    .logo-text {
+        font-size: 1.5rem;
     }
     
     .nav-buttons {
@@ -619,53 +725,451 @@ body {
         padding: 8px 20px;
         font-size: 0.85rem;
     }
-}
-
-@media (max-width: 480px) {
-    .signin-container {
-        padding: 30px 15px;
-    }
-    
-    .signin-wrapper,
-    .benefits-panel {
-        padding: 30px 20px;
-    }
     
     .signin-header h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
+        margin-bottom: 8px;
     }
     
     .signin-subtitle {
         font-size: 1rem;
     }
     
-    .form-options {
-        flex-direction: column;
-        align-items: flex-start;
+    .benefits-header h2 {
+        font-size: 1.6rem;
+    }
+    
+    .benefits-header p {
+        font-size: 1rem;
+    }
+    
+    .footer-bottom {
         gap: 15px;
+    }
+    
+    .footer-extra {
+        gap: 20px;
+    }
+}
+
+/* Mobile Large - 480px to 767px */
+@media (max-width: 480px) {
+    body {
+        font-size: 15px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .nav-container {
+        padding: 0 12px;
+    }
+    
+    .logo-text {
+        font-size: 1.3rem;
+    }
+    
+    .logo-img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .nav-buttons {
+        gap: 10px;
+    }
+    
+    .nav-link {
+        font-size: 0.9rem;
+    }
+    
+    .btn-secondary {
+        padding: 6px 15px;
+        font-size: 0.8rem;
+    }
+    
+    .signin-container {
+        padding: 25px 12px;
+    }
+    
+    .signin-wrapper,
+    .benefits-panel {
+        padding: 25px 20px;
+        border-radius: 16px;
+    }
+    
+    .signin-header {
+        margin-bottom: 25px;
+    }
+    
+    .signin-header h1 {
+        font-size: 1.7rem;
+    }
+    
+    .signin-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .google-signin-container {
+        margin-bottom: 25px;
     }
     
     .btn-google,
     .btn-signin {
         padding: 14px 20px;
         font-size: 0.95rem;
+        border-radius: 10px;
+    }
+    
+    .divider {
+        margin: 15px 0;
+        font-size: 0.85rem;
+    }
+    
+    .divider span {
+        padding: 0 12px;
+    }
+    
+    .signin-form {
+        gap: 15px;
+    }
+    
+    .form-group label {
+        font-size: 0.9rem;
+    }
+    
+    .input-with-icon i {
+        left: 14px;
+        font-size: 1rem;
+    }
+    
+    .input-with-icon input {
+        padding: 14px 14px 14px 44px;
+        font-size: 0.95rem;
+        border-radius: 10px;
+    }
+    
+    .toggle-password {
+        right: 14px;
+        font-size: 1rem;
+    }
+    
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin: 5px 0 15px;
+    }
+    
+    .remember-me label {
+        font-size: 0.85rem;
+    }
+    
+    .forgot-password {
+        font-size: 0.85rem;
+    }
+    
+    .btn-signin {
+        padding: 16px 20px;
+        font-size: 0.95rem;
+        border-radius: 10px;
+    }
+    
+    .signup-link {
+        margin-top: 20px;
+        padding-top: 20px;
+    }
+    
+    .signup-link p {
+        font-size: 0.9rem;
+    }
+    
+    .security-info {
+        margin-top: 15px;
+    }
+    
+    .secure-badge {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+    }
+    
+    .benefits-header {
+        margin-bottom: 30px;
+    }
+    
+    .benefits-header h2 {
+        font-size: 1.4rem;
+    }
+    
+    .benefits-header p {
+        font-size: 0.95rem;
+    }
+    
+    .benefits-list {
+        gap: 20px;
     }
     
     .benefit-item {
         flex-direction: column;
         text-align: center;
         align-items: center;
+        gap: 12px;
     }
     
     .benefit-icon {
         width: 45px;
         height: 45px;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+    }
+    
+    .benefit-content h3 {
+        font-size: 1rem;
+        text-align: center;
+    }
+    
+    .benefit-content p {
+        font-size: 0.85rem;
+        text-align: center;
+    }
+    
+    .footer {
+        padding-top: 30px;
+        padding-bottom: 25px;
+    }
+    
+    .footer-bottom {
+        padding-top: 25px;
+        gap: 15px;
+    }
+    
+    .footer-bottom p {
+        font-size: 0.85rem;
     }
     
     .footer-extra {
         flex-direction: column;
+        gap: 12px;
+    }
+    
+    .footer-extra a {
+        font-size: 0.85rem;
+    }
+}
+
+/* Mobile Small - 375px to 479px */
+@media (max-width: 375px) {
+    .logo-text {
+        font-size: 1.2rem;
+    }
+    
+    .logo-img {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .nav-link {
+        font-size: 0.85rem;
+    }
+    
+    .btn-secondary {
+        padding: 5px 12px;
+        font-size: 0.75rem;
+    }
+    
+    .signin-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .signin-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .btn-google,
+    .btn-signin {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .input-with-icon input {
+        padding: 12px 12px 12px 40px;
+        font-size: 0.9rem;
+    }
+    
+    .input-with-icon i {
+        left: 12px;
+        font-size: 0.95rem;
+    }
+    
+    .toggle-password {
+        right: 12px;
+        font-size: 0.95rem;
+    }
+    
+    .benefits-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .benefits-header p {
+        font-size: 0.9rem;
+    }
+    
+    .benefit-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+    
+    .benefit-content h3 {
+        font-size: 0.95rem;
+    }
+    
+    .benefit-content p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Mobile Extra Small - 320px to 374px */
+@media (max-width: 320px) {
+    .container,
+    .nav-container {
+        padding: 0 10px;
+    }
+    
+    .logo-text {
+        font-size: 1.1rem;
+    }
+    
+    .logo-img {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .nav-buttons {
+        gap: 8px;
+    }
+    
+    .nav-link {
+        font-size: 0.8rem;
+    }
+    
+    .signin-container {
+        padding: 20px 10px;
+    }
+    
+    .signin-wrapper,
+    .benefits-panel {
+        padding: 20px 15px;
+        border-radius: 14px;
+    }
+    
+    .signin-header h1 {
+        font-size: 1.3rem;
+    }
+    
+    .signin-subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .btn-google,
+    .btn-signin {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+    }
+    
+    .divider {
+        font-size: 0.8rem;
+    }
+    
+    .divider span {
+        padding: 0 8px;
+    }
+    
+    .form-group label {
+        font-size: 0.85rem;
+    }
+    
+    .input-with-icon input {
+        padding: 10px 10px 10px 38px;
+        font-size: 0.85rem;
+    }
+    
+    .input-with-icon i {
+        left: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .toggle-password {
+        right: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .remember-me label {
+        font-size: 0.8rem;
+    }
+    
+    .forgot-password {
+        font-size: 0.8rem;
+    }
+    
+    .signup-link p {
+        font-size: 0.85rem;
+    }
+    
+    .secure-badge {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .benefits-header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .benefits-header p {
+        font-size: 0.85rem;
+    }
+    
+    .benefits-list {
         gap: 15px;
+    }
+    
+    .benefit-item {
+        gap: 10px;
+    }
+    
+    .benefit-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .benefit-content h3 {
+        font-size: 0.9rem;
+    }
+    
+    .benefit-content p {
+        font-size: 0.75rem;
+    }
+    
+    .footer {
+        padding-top: 25px;
+        padding-bottom: 20px;
+    }
+    
+    .footer-bottom {
+        padding-top: 20px;
+        gap: 12px;
+    }
+    
+    .footer-bottom p {
+        font-size: 0.8rem;
+    }
+    
+    .footer-extra {
+        gap: 10px;
+    }
+    
+    .footer-extra a {
+        font-size: 0.8rem;
     }
 }
 
@@ -697,4 +1201,44 @@ body {
 
 .input-with-icon.error input {
     border-color: var(--error);
+}
+
+/* Utility Classes for Text Overflow */
+.text-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.word-break {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Prevent Horizontal Overflow */
+* {
+    max-width: 100%;
+}
+
+img, video, canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Touch-friendly Tap Targets */
+@media (max-width: 768px) {
+    .btn-google,
+    .btn-signin,
+    .btn-secondary,
+    .toggle-password,
+    .forgot-password,
+    .signup-link a {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .remember-me input[type="checkbox"] {
+        min-width: 20px;
+        min-height: 20px;
+    }
 }
