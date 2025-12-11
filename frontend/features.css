@@ -306,7 +306,6 @@ p {
 
 /* Mobile Menu Overlay */
 .mobile-overlay {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -317,6 +316,7 @@ p {
     backdrop-filter: blur(5px);
     opacity: 0;
     transition: opacity 0.3s ease;
+    display: none;
 }
 
 .mobile-overlay.active {
@@ -1044,10 +1044,11 @@ p {
         justify-content: flex-start;
         padding: 90px 25px 30px;
         gap: 20px;
-        transition: var(--transition);
+        transition: right 0.3s ease;
         z-index: 999;
         overflow-y: auto;
         box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+        display: flex !important;
     }
     
     .nav-menu.active {
