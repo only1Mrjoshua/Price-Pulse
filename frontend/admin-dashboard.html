@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - PricePulse | System Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="admin-dashboard.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar - Same structure, different links -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo-wrapper">
+          <div class="logo-img">
+            <img src="images/price pulse.png" alt="PricePulse Logo" />
+          </div>
+          <a href="index.html" class="logo-text">Price<span>Pulse</span></a>
+        </div>
+
+        <div class="nav-menu" id="navMenu">
+          <a href="admin-dashboard.html" class="nav-link active"
+            >Admin Dashboard</a
+          >
+          <a href="admin-users.html" class="nav-link">Users</a>
+          <a href="admin-products.html" class="nav-link">Products</a>
+          <a href="admin-alerts.html" class="nav-link">Alerts</a>
+          <a href="admin-reports.html" class="nav-link">Reports</a>
+          <div class="nav-buttons">
+            <a href="admin-profile.html" class="btn-login">
+              <i class="fas fa-user-shield"></i>
+              Admin
+            </a>
+            <a href="index.html" class="btn-signup">Logout</a>
+          </div>
+        </div>
+
+        <button class="hamburger" id="hamburger">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Main Admin Dashboard Content -->
+    <main class="admin-container">
+      <!-- Admin Header -->
+      <header class="admin-header">
+        <div class="container">
+          <div class="header-content">
+            <h1 class="admin-title">System Administration</h1>
+            <p class="admin-subtitle">
+              Monitor users, track products, and manage system-wide alerts
+            </p>
+            <div class="header-actions">
+              <div class="last-updated">
+                <i class="fas fa-clock"></i>
+                <span>Last updated: <span id="lastUpdatedTime"></span></span>
+              </div>
+              <button class="btn-primary" id="refreshSystemBtn">
+                <i class="fas fa-sync-alt"></i>
+                Refresh System Data
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Admin Metrics Section -->
+      <section class="metrics-section">
+        <div class="container">
+          <h2 class="section-title">System Overview</h2>
+          <div class="metrics-grid">
+            <!-- Cards will be populated by JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- User Management Section -->
+      <section class="users-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">User Management</h2>
+            <div class="section-actions">
+              <button class="btn-secondary" id="addUserBtn">
+                <i class="fas fa-user-plus"></i>
+                Add User
+              </button>
+              <button class="btn-secondary" id="exportUsersBtn">
+                <i class="fas fa-download"></i>
+                Export CSV
+              </button>
+            </div>
+          </div>
+
+          <div class="users-table-container">
+            <div class="table-responsive">
+              <table class="admin-table" id="usersTable">
+                <thead>
+                  <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Tracked Products</th>
+                    <th>Active Alerts</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="usersTableBody">
+                  <!-- Users will be populated by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+
+            <div class="table-footer">
+              <div class="table-info">
+                Showing <span id="usersCount">0</span> users
+              </div>
+              <div class="table-pagination">
+                <button class="pagination-btn" disabled>
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <span class="pagination-info">Page 1 of 1</span>
+                <button class="pagination-btn">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Product Monitoring Section -->
+      <section class="products-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Product Monitoring</h2>
+            <div class="search-filter">
+              <input
+                type="text"
+                placeholder="Search products..."
+                id="productSearch"
+              />
+              <select id="platformFilter">
+                <option value="">All Platforms</option>
+                <option value="jumia">Jumia</option>
+                <option value="konga">Konga</option>
+                <option value="amazon">Amazon</option>
+                <option value="ebay">eBay</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="products-grid" id="productsGrid">
+            <!-- Products will be populated by JavaScript -->
+          </div>
+
+          <div
+            class="empty-state"
+            id="productsEmptyState"
+            style="display: none"
+          >
+            <div class="empty-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <h3>No products found</h3>
+            <p>Try adjusting your search or filter criteria</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Alerts Monitor Section -->
+      <section class="alerts-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Recent System Alerts</h2>
+            <button class="btn-secondary" id="clearOldAlertsBtn">
+              <i class="fas fa-trash"></i>
+              Clear Old Alerts
+            </button>
+          </div>
+
+          <div class="alerts-container">
+            <div class="alerts-list" id="alertsList">
+              <!-- Alerts will be populated by JavaScript -->
+            </div>
+
+            <div
+              class="empty-state"
+              id="alertsEmptyState"
+              style="display: none"
+            >
+              <div class="empty-icon">
+                <i class="fas fa-bell-slash"></i>
+              </div>
+              <h3>No recent alerts</h3>
+              <p>System is running smoothly</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- System Activity Log -->
+      <section class="activity-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">System Activity Log</h2>
+            <button class="btn-secondary" id="exportLogBtn">
+              <i class="fas fa-download"></i>
+              Export Log
+            </button>
+          </div>
+
+          <div class="activity-log">
+            <div class="log-entries" id="activityLog">
+              <!-- Activity entries will be populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="logo-wrapper">
+              <div class="logo-img">
+                <img src="images/price pulse.png" alt="PricePulse Logo" />
+              </div>
+              <a href="index.html" class="logo-text">Price<span>Pulse</span></a>
+            </div>
+            <p class="footer-description">
+              Admin dashboard for PricePulse - Smart E-Commerce Price Tracker
+            </p>
+            <div class="system-status">
+              <div class="status-indicator online">
+                <div class="status-dot"></div>
+                <span>System: <strong>Online</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <div class="link-group">
+              <h4>Admin</h4>
+              <a href="admin-dashboard.html">Dashboard</a>
+              <a href="admin-users.html">User Management</a>
+              <a href="admin-products.html">Product Monitoring</a>
+              <a href="admin-reports.html">Reports</a>
+            </div>
+
+            <div class="link-group">
+              <h4>System</h4>
+              <a href="admin-logs.html">System Logs</a>
+              <a href="admin-settings.html">Settings</a>
+              <a href="admin-backup.html">Backup</a>
+              <a href="admin-monitoring.html">Monitoring</a>
+            </div>
+
+            <div class="link-group">
+              <h4>Support</h4>
+              <a href="admin-help.html">Help Center</a>
+              <a href="admin-docs.html">Documentation</a>
+              <a href="admin-api.html">API</a>
+              <a href="admin-contact.html">Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2023 PricePulse Admin. All rights reserved.
+            <span class="admin-warning">
+              <i class="fas fa-shield-alt"></i>
+              Restricted Access
+            </span>
+          </p>
+          <div class="footer-extra">
+            <span>Server Time: <span id="serverTime"></span></span>
+            <div class="secure-badge">
+              <i class="fas fa-lock"></i>
+              <span>Admin Session Active</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Templates -->
+    <template id="metricCardTemplate">
+      <div class="metric-card">
+        <div class="metric-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="metric-content">
+          <h3 class="metric-value">0</h3>
+          <p class="metric-label">Total Users</p>
+        </div>
+        <div class="metric-trend">
+          <span class="trend-value">+0%</span>
+          <i class="fas fa-arrow-up"></i>
+        </div>
+      </div>
+    </template>
+
+    <template id="userRowTemplate">
+      <tr>
+        <td>
+          <div class="user-cell">
+            <div class="user-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="user-info">
+              <strong class="username">johndoe</strong>
+              <span class="user-role">Standard User</span>
+            </div>
+          </div>
+        </td>
+        <td>john.doe@example.com</td>
+        <td>12</td>
+        <td>8</td>
+        <td>
+          <span class="status-badge active">Active</span>
+        </td>
+        <td>
+          <div class="action-buttons">
+            <button class="btn-action view-user" title="View User">
+              <i class="fas fa-eye"></i>
+            </button>
+            <button class="btn-action suspend-user" title="Suspend User">
+              <i class="fas fa-user-slash"></i>
+            </button>
+            <button class="btn-action delete-user" title="Delete User">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </template>
+
+    <template id="productCardTemplate">
+      <div class="product-admin-card">
+        <div class="product-header">
+          <div class="product-platform">
+            <i class="fab fa-amazon"></i>
+            <span>Amazon</span>
+          </div>
+          <div class="product-users">
+            <i class="fas fa-users"></i>
+            <span>25 users</span>
+          </div>
+        </div>
+        <div class="product-body">
+          <h4 class="product-name">Samsung Galaxy S23 Ultra</h4>
+          <div class="product-price">
+            <span class="current-price">₦850,000</span>
+            <span class="price-change down">-5.2%</span>
+          </div>
+          <div class="product-meta">
+            <span><i class="fas fa-clock"></i> Updated: 2 min ago</span>
+            <span><i class="fas fa-history"></i> 12 price changes</span>
+          </div>
+        </div>
+        <div class="product-actions">
+          <button class="btn-action view-history">
+            <i class="fas fa-chart-line"></i>
+            History
+          </button>
+          <button class="btn-action force-refresh">
+            <i class="fas fa-sync-alt"></i>
+            Refresh
+          </button>
+          <button class="btn-action disable-tracking">
+            <i class="fas fa-ban"></i>
+            Disable
+          </button>
+        </div>
+      </div>
+    </template>
+
+    <template id="alertItemTemplate">
+      <div class="alert-item">
+        <div class="alert-icon">
+          <i class="fas fa-bell"></i>
+        </div>
+        <div class="alert-content">
+          <div class="alert-header">
+            <h4>Price Drop Alert Triggered</h4>
+            <span class="alert-time">5 minutes ago</span>
+          </div>
+          <p class="alert-message">
+            Samsung Galaxy S23 Ultra price dropped to ₦850,000 on Amazon
+          </p>
+          <div class="alert-details">
+            <span class="platform-badge">
+              <i class="fab fa-amazon"></i>
+              Amazon
+            </span>
+            <span class="status-badge sent">
+              <i class="fas fa-check-circle"></i>
+              Sent to 8 users
+            </span>
+          </div>
+        </div>
+        <div class="alert-actions">
+          <button class="btn-action view-details" title="View Details">
+            <i class="fas fa-search"></i>
+          </button>
+          <button class="btn-action mark-resolved" title="Mark Resolved">
+            <i class="fas fa-check"></i>
+          </button>
+        </div>
+      </div>
+    </template>
+
+    <template id="activityEntryTemplate">
+      <div class="activity-entry">
+        <div class="activity-icon">
+          <i class="fas fa-user-shield"></i>
+        </div>
+        <div class="activity-content">
+          <p class="activity-message">
+            <strong>Admin</strong> suspended user <strong>john_doe</strong>
+          </p>
+          <span class="activity-time">10:25 AM</span>
+        </div>
+      </div>
+    </template>
+
+    <script src="script.js"></script>
+    <script src="admin-dashboard.js"></script>
+  </body>
+</html>
