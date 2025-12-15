@@ -1,0 +1,32 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+import os
+
+# Import your user router
+from routers import users
+
+app = FastAPI()
+
+# Static files
+os.makedirs("static/avatars", exist_ok=True)
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Include user router
+app.include_router(users.router)
+
+@app.get("/")
+async def root():
+    return {"message": "LMS API"}
+
+@app.get("/health")
+async def health():
+    return {"status": "ok"}

@@ -47,3 +47,25 @@ async def close_mongo_connection():
     if mongodb.client:
         mongodb.client.close()
         print("🔌 MongoDB connection closed")
+
+async def create_essential_indexes():
+    """
+    Create only ESSENTIAL indexes that are critical for data integrity.
+    
+    Start with minimal indexes and add more based on actual query patterns.
+    """
+    try:
+        db = await get_database()
+        
+        # Test connection first
+        await db.command('ping')
+        print("📊 Creating essential indexes...")
+        
+        # ONLY critical indexes for data integrity
+        await db.users.create_index("email", unique=True)
+        await db.users.create_index("username", unique=True)
+        
+        print("✅ Essential indexes created successfully")
+        
+    except Exception as e:
+        print(f"⚠️  Could not create indexes: {e}")
