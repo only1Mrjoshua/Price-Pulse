@@ -312,8 +312,10 @@ document.addEventListener('DOMContentLoaded', function() {
     confirmPasswordInput.addEventListener('blur', validateConfirmPassword);
 });
 
-// Configuration
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL =
+  window.location.hostname === 'localhost'
+    ? 'http://localhost:8000'
+    : 'https://price-pulse-backend-ttv4.onrender.com';
 const SIGNUP_ENDPOINT = `${API_BASE_URL}/users/signup`;
 
 // Toast Notification System
